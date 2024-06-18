@@ -24,6 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    background-color: #0e100f;
 }
 
 @layer utilities {
@@ -31,3 +32,156 @@ body {
     text-wrap: balance;
   }
 }
+
+
+
+nav .left ul li a, nav .right a {
+  text-decoration: none;
+  display: flex;
+  color: #7c7c6f;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 600;
+  height: 100%;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+nav .left ul li a:hover {
+  color: #fffce1;
+}
+
+
+.btn {
+  align-items: center;
+  background: 0 0;
+  border: 2px solid #fffce1;
+  border-radius: 6.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 600;
+  font-size: 16px;
+  gap: 0.363636rem;
+  justify-content: center;
+  letter-spacing: -0.01em;
+  line-height: 1.04545;
+  overflow: hidden;
+  padding: 0.9375rem 1.5rem;
+  position: relative;
+  text-decoration: none;
+  color: #7c7c6f;
+  transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);  
+}
+
+.btn:hover {
+  color: #fffce1;
+}
+
+
+
+#main {
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fffce1;
+  /* font-family: Mori, sans-serif; */
+  font-size: 9.5vw;
+}
+
+#page1 {
+  width: 80%;
+  height: 70vh;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#page1 .text111 {
+  text-align: left;
+  margin-top: 50px;
+  font-family: Mori, sans-serif;
+  font-size: 12vw;
+  }
+
+
+  #page1 .text222 {
+  text-align: right;
+  font-family: Mori, sans-serif;
+  margin-top: -100px;
+  font-size: 12vw;
+  }
+
+  #page1 .Mysvg {
+  width: 120px;
+  height: 110px;
+  position: absolute;
+  left: 175px;
+  top: 39px;
+  animation: rotate 3s linear infinite;
+  }
+
+  @keyframes rotate {
+    0%, 25% {
+      transform: rotate(-90deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  #page1 .modelImg {
+    position: absolute;
+    height: 150px;
+    right: 420px;
+    top: 500px;
+    transform: rotate(20deg);
+    animation: rotates 3s linear infinite alternate;
+  }
+
+  @keyframes rotates {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: rotate(-25);
+    }
+  }
+
+
+  #page1 .animateI {
+    display: inline-block;
+    animation: flip-cycle 20s linear infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes flip-cycle {
+    0% {
+      transform: rotateX(0deg);
+    }
+    20% {
+      transform: rotateX(360deg);
+    }
+    40% {
+      transform: rotateX(720deg);
+    }
+    50% {
+      transform: rotateX(900deg); /* This is the exclamation mark position */
+    }
+    60% {
+      transform: rotateX(1080deg);
+    }
+    80% {
+      transform: rotateX(1440deg);
+    }
+    100% {
+      transform: rotateX(1800deg);
+    }
+  }
