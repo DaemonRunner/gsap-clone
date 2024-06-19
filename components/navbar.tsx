@@ -7,7 +7,7 @@ type Props = {}
 
 const Navbar = (props: Props) => {
   return (
-    <div>
+    <div className=' fixed inset-x-0 h-fit top-0 right-0 bg-[#0E100F]'>
         <nav className=' w-[90%] h-[100px] flex justify-between items-center mx-auto border-b-[0.0625rem] border-[#42433d] left'>
             <div className=' flex items-center justify-start gap-[30px] left'>
                 <Image src="/download.png" alt="GSAP" width={60} height={42} className=' w-[100px]' />
@@ -20,7 +20,7 @@ const Navbar = (props: Props) => {
                     <li className=' hover:text-[#fffce1]'><a href='#'>Docs</a></li>
                 </ul>
             </div>
-            <div className='flex items-center justify-start gap-[30px] right'>
+            <div className={`flex items-center justify-start gap-[30px] right ${mori.className}`}>
                 <a href='' className='hover:text-[#fffce1]'>Login/Create Account</a>
                 <button className=' btn'>Get GSAP</button>
             </div>

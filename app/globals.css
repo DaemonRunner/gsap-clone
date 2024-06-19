@@ -185,3 +185,19 @@ nav .left ul li a:hover {
       transform: rotateX(1800deg);
     }
   }
+
+
+
+  /* horizontal section */
+  .races {
+    width:fit-content;
+    display:flex;
+    flex-wrap:nowrap;
+  }
+
+  .races div {
+    flex-shrink: 0;
+    /* padding-right: 0.3em;
+    padding-left: 0.3em;
+    margin: 0; */
+  }
