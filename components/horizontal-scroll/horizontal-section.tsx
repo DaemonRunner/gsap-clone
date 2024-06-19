@@ -2,15 +2,24 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
+
 import { mori } from "@/fonts/font";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import motion from "framer-motion";
+import HorizontalText from "./horizontal-text";
 
 type Props = {};
 
 const HorizontalSection = (props: Props) => {
   const racesRef = useRef<HTMLDivElement>(null);
   const racesWrapperRef = useRef<HTMLDivElement>(null);
+
+  const sentence = 'Nice and Easy Easing Add personality to you animation with a huge variety of plug and play plugins eases, or build your own custom curves Choreograph animation sequences in a snap.';
+  const words = sentence.split(" ");
+
+  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +40,7 @@ const HorizontalSection = (props: Props) => {
     ScrollTrigger.create({
       trigger: racesWrapperRef.current,
       start: "top 20%",
-      end: () => `+=${getScrollAmount() * -1.6}`,
+      end: () => `+=${getScrollAmount() * -1.7}`,
       pin: true,
       animation: tween,
       scrub: 1,
@@ -65,9 +74,12 @@ const HorizontalSection = (props: Props) => {
           </div>
         </div>
 
-        <div className="w-[430%] mt-[15%] px-5">
-            <span className={` text-[#fffce1] text-[5rem] font-extrabold ${mori.className} `} style={{letterSpacing:'0.3rem', fontWeight:'900'}}>Nice and Easy Easing Add personality to you animation with a huge variety of plug and play plugins eases, or build your own custom curves Choreograph animation sequences in a snap</span>
-        </div>
+        {/* <div className="w-[500%] mt-[15%] px-5">
+            {/* <Image src="/horizontal-2.png" alt="err" width={700} height={700} className=" inline" /> */}
+            {/* <span className={` text-[#fffce1] text-[5rem] font-extrabold ${mori.className} `} style={{letterSpacing:'0.3rem', fontWeight:'900'}}></span> */}
+        {/* </div> */} */
+
+        <HorizontalText sentence={sentence} />
 
 
 
