@@ -17,14 +17,14 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
-    background-color: #0e100f;
+    rgb(var(--background-start-rgb)); */
+    background-color: #0E100F;
 }
 
 @layer utilities {
@@ -86,7 +86,7 @@ nav .left ul li a:hover {
 #main {
   width: 100%;
   height: 100%;
-  margin-top: 50px;
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,8 +97,8 @@ nav .left ul li a:hover {
 }
 
 #page1 {
-  width: 80%;
-  height: 70vh;
+  width: 85%;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
   position: relative;

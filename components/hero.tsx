@@ -10,9 +10,9 @@ const Hero = (props: Props) => {
     <>
       <div
         id="main"
-        className={`${mori.className} items-center justify-center mx-auto `}
+        className={`${mori.className} items-center justify-center mx-auto min-h-screen  `}
       >
-        <div id="page1">
+        <div id="page1" className="border-b-[0.0625rem] border-[#42433d]">
           <svg
             className="Mysvg"
             viewBox="0 0 137 135"
@@ -69,52 +69,53 @@ const Hero = (props: Props) => {
           <h1 className="text222 text-right  font-extrabold z-100">
             anyth<span className="animateI">i</span>ng
           </h1>
-        </div>
-      </div>
-      <div className={` flex justify-between mx-auto w-[90%] ${mori.className} `}>
-        <div className=" flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 27 78"
-            aria-hidden="true"
-            className=" w-[100px] h-[120px]"
+          <div
+            className={` flex justify-between mx-auto w-full mt-[4rem] ${mori.className} `}
           >
-            <path
-              fill="currentColor"
-              d="M26.52 77.21h-5.75c-6.83 0-12.38-5.56-12.38-12.38V48.38C8.39 43.76 4.63 40 .01 40v-4c4.62 0 8.38-3.76 8.38-8.38V12.4C8.38 5.56 13.94 0 20.77 0h5.75v4h-5.75c-4.62 0-8.38 3.76-8.38 8.38V27.6c0 4.34-2.25 8.17-5.64 10.38 3.39 2.21 5.64 6.04 5.64 10.38v16.45c0 4.62 3.76 8.38 8.38 8.38h5.75v4.02Z"
-            ></path>
-          </svg>
-          <div className=" max-w-[35rem] max-h-[120px] flex items-center">
-            <span className=" text-[28px] font-medium  ">
-              GSAP - A wildly robust Javascript animation library built for
-              professionals.
-            </span>
+            <div className=" flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 27 78"
+                aria-hidden="true"
+                className=" w-[50px] h-[100px]"
+              >
+                <path
+                  fill="currentColor"
+                  d="M26.52 77.21h-5.75c-6.83 0-12.38-5.56-12.38-12.38V48.38C8.39 43.76 4.63 40 .01 40v-4c4.62 0 8.38-3.76 8.38-8.38V12.4C8.38 5.56 13.94 0 20.77 0h5.75v4h-5.75c-4.62 0-8.38 3.76-8.38 8.38V27.6c0 4.34-2.25 8.17-5.64 10.38 3.39 2.21 5.64 6.04 5.64 10.38v16.45c0 4.62 3.76 8.38 8.38 8.38h5.75v4.02Z"
+                ></path>
+              </svg>
+              <div className=" max-w-[35rem] max-h-[30px] flex items-center">
+                <span className=" text-[27px] font-medium  " style={{lineHeight:'1.2'}}>
+                  GSAP - A wildly robust Javascript animation library built for
+                  professionals.
+                </span>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 27 78"
+                aria-hidden="true"
+                className=" w-[50px] h-[100px]"
+                transform="scale(-1, 1)"
+              >
+                <path
+                  fill="currentColor"
+                  d="M26.52 77.21h-5.75c-6.83 0-12.38-5.56-12.38-12.38V48.38C8.39 43.76 4.63 40 .01 40v-4c4.62 0 8.38-3.76 8.38-8.38V12.4C8.38 5.56 13.94 0 20.77 0h5.75v4h-5.75c-4.62 0-8.38 3.76-8.38 8.38V27.6c0 4.34-2.25 8.17-5.64 10.38 3.39 2.21 5.64 6.04 5.64 10.38v16.45c0 4.62 3.76 8.38 8.38 8.38h5.75v4.02Z"
+                ></path>
+              </svg>
+            </div>
+            <div className=" items-center flex gap-3">
+              <button
+                title="Save"
+                className="cursor-pointer w-[200px]  flex items-center justify-center bg-lime-950 hover:bg-lime-900 active:border active:border-lime-400 rounded-full duration-100 p-4"
+              >
+                <span className="text-lg text-lime-400 font-bold">
+                  Get GSAP
+                </span>
+              </button>
+            </div>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 27 78"
-            aria-hidden="true"
-            className=" w-[100px] h-[120px]"
-            transform="scale(-1, 1)"
-          >
-            <path
-              fill="currentColor"
-              d="M26.52 77.21h-5.75c-6.83 0-12.38-5.56-12.38-12.38V48.38C8.39 43.76 4.63 40 .01 40v-4c4.62 0 8.38-3.76 8.38-8.38V12.4C8.38 5.56 13.94 0 20.77 0h5.75v4h-5.75c-4.62 0-8.38 3.76-8.38 8.38V27.6c0 4.34-2.25 8.17-5.64 10.38 3.39 2.21 5.64 6.04 5.64 10.38v16.45c0 4.62 3.76 8.38 8.38 8.38h5.75v4.02Z"
-            ></path>
-          </svg>
-        </div>
-        <div className=" items-center flex gap-3">
-          <button
-            title="Save"
-            className="cursor-pointer w-[200px] mr-[5rem] flex items-center justify-center bg-lime-950 hover:bg-lime-900 active:border active:border-lime-400 rounded-full duration-100 p-4"
-          >
-           
-            <span className="text-lg text-lime-400 font-bold pr-1">
-              Get GSAP
-            </span>
-          </button>
         </div>
       </div>
     </>
