@@ -1,5 +1,6 @@
 import React from 'react'
 import { mori } from '@/fonts/font'
+import Image from 'next/image'
 
 type Props = {}
 
@@ -39,10 +40,38 @@ const ToolsSection = (props: Props) => {
           </svg>
         </div>
 
-        <div className=' mt-[5rem]'>
-            <span className={` text-[5rem] ${mori.className}`} style={{ lineHeight: '1.2'}}>
-            GSAP allows you to effortlessly animate anything JS can touch. Delivering silky-smooth performance and unmatched support so you can focus on the fun stuff.
-            </span>
+        <div className={` mt-[5rem] ${mori.className} border-b-[0.0625rem] border-[#42433d] py-[3rem]`}>
+            <div className=' flex gap-[15rem]'>
+                <Image src="/svgexport-41.svg" width={320} height={320} alt="" />
+                <div className=' flex-col space-y-[4rem] '>
+                    <p className=' text-[47px] text-[#FEC5FB]' style={{fontWeight: '600'}}>Scroll</p>
+                    <p className=' text-[47px] text-[#fffce1]' style={{fontWeight: '600'}}>Turn scrolling into silky-smooth storytelling.</p>
+                    <button className=' btn'>Explore Scroll</button>
+                </div>
+            </div>
+        </div>
+
+        <div className={` mt-[5rem] ${mori.className} border-b-[0.0625rem] border-[#42433d] py-[3rem]`}>
+            <div className=' flex gap-[15rem]'>
+                <Image src="/svgexport-42.svg" width={320} height={320} alt="" />
+                <div className=' flex-col space-y-[4rem] '>
+                    <p className=' text-[47px] text-[#FF8709]' style={{fontWeight: '600'}}>SVG</p>
+                    <p className=' text-[47px] text-[#fffce1]' style={{fontWeight: '600'}}>Turn scrolling into silky-smooth storytelling.</p>
+                    <button className=' btn'>Explore Scroll</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div className={` mt-[5rem] ${mori.className} border-b-[0.0625rem] border-[#42433d] py-[3rem]`}>
+            <div className=' flex gap-[15rem]'>
+                <Image src="/svgexport-41.svg" width={320} height={320} alt="" />
+                <div className=' flex-col space-y-[4rem] '>
+                    <p className=' text-[47px] text-[#FEC5FB]' style={{fontWeight: '600'}}>Scroll</p>
+                    <p className=' text-[47px] text-[#fffce1]' style={{fontWeight: '600'}}>Turn scrolling into silky-smooth storytelling.</p>
+                    <button className=' btn'>Explore Scroll</button>
+                </div>
+            </div>
         </div>
     </div>
   )
