@@ -1,5 +1,7 @@
 "use client"
+import Brands from "@/components/brands";
 import DetailsSection from "@/components/details";
+import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import HorizontalSection from "@/components/horizontal-scroll/horizontal-section";
 import Navbar from "@/components/navbar";
@@ -15,6 +17,8 @@ export default function Home() {
       <DetailsSection />
       <HorizontalSection />
       <ToolsSection />
+      <Brands />
+      <Footer />
     </div>
     
   );

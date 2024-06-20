@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+
 import { mori } from '@/fonts/font';
+
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -63,6 +66,29 @@ const HorizontalText = ({ sentence }: Props) => {
     },
   };
 
+  const SVGs = {
+    visible: () => {
+        return {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                damping: 12,
+                stiffness: 100,
+            },
+        }
+    },
+    hidden: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  }
+
   return (
     <motion.div
     //   ref={ref}
@@ -70,8 +96,13 @@ const HorizontalText = ({ sentence }: Props) => {
     //   variants={container}
     //   initial="hidden"
     //   animate={controls}
-      className="w-[500%] mt-[15%] px-5"
+      className="w-[470%] mt-[15%] px-5"
     >
+        <motion.div
+        ref={ref} variants={SVGs} whileInView="visible" viewport={{ once: true }}>
+        <Image  src="/horizontal-2.png" alt="err" width={700} height={700} className=" inline" />
+
+        </motion.div>
       {words.map((word, index) => {
         return (
           <motion.span
