@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
+type Props = {};
+
 const AnimatedSVG = () => {
   const svgRef = useRef(null);
 
@@ -11,8 +13,8 @@ const AnimatedSVG = () => {
     gsap.set(svg, { 
       x: -window.innerWidth, // Start from left of the screen
       opacity: 0,
-      rotate: 0
-    });
+      rotate: 0,
+    },);
 
     // Create the initial animation
     gsap.to(svg, {
@@ -22,6 +24,7 @@ const AnimatedSVG = () => {
       rotate: 360, // Full rotation
       duration: 2,
       ease: "power2.out",
+      delay: 0.7,
       onComplete: startRotationCycle, // Start the rotation cycle after initial animation
     //   delay: 0.5,
     });
