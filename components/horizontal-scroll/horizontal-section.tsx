@@ -74,10 +74,10 @@ const HorizontalSection = (props: Props) => {
           </div>
         </div>
 
-        {/* <div className="w-[500%] mt-[15%] px-5">
-            {/* <Image src="/horizontal-2.png" alt="err" width={700} height={700} className=" inline" /> */}
-            {/* <span className={` text-[#fffce1] text-[5rem] font-extrabold ${mori.className} `} style={{letterSpacing:'0.3rem', fontWeight:'900'}}></span> */}
-        {/* </div> */} */
+         {/* <div className="w-[500%] mt-[15%] px-5">
+             <Image src="/horizontal-2.png" alt="err" width={700} height={700} className=" inline" />
+             <span className={` text-[#fffce1] text-[5rem] font-extrabold ${mori.className} `} style={{letterSpacing:'0.3rem', fontWeight:'900'}}></span> 
+        </div> */}
 
         <HorizontalText sentence={sentence} />
 

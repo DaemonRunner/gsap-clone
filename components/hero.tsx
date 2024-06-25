@@ -145,7 +145,7 @@ const Hero = (props: Props) => {
           duration: 0.5, // Adjusted duration
           ease: "elastic.out(1, 0.5)",
         },
-        "-=0.15"
+        "-=0.80"
       )
 
       // .to(animateM, {
@@ -165,6 +165,13 @@ const Hero = (props: Props) => {
         },
         "-=0.3"
       )
+      .to(aSVGRef.current, {
+      rotation: 360,
+      duration: 1.0,
+      ease: "none",
+      repeat: -1,
+      transformOrigin: "center center",
+    }, "-=0.3") // Start the rotation at the same time as the scale animation
       .to(
         animateM,
         {
@@ -198,8 +205,10 @@ const Hero = (props: Props) => {
           opacity: 1,
           duration: 0.3,
           ease: "back.out(1.7)",
+          onComplete: () => {
+            gsap.killTweensOf(aSVGRef.current, "rotation");
+          }
         },
-        "-=0.25"
       )
 
       .to(
@@ -245,7 +254,7 @@ const Hero = (props: Props) => {
           ease: "back.out(1.7)",
           stagger: 0.16,
         },
-        "-=0.32"
+        "-=0.72"
       )
       .to(
         [aBottom, nBottom],
@@ -255,7 +264,7 @@ const Hero = (props: Props) => {
           duration: 0.3, // Adjusted duration
           stagger: 0.16,
         },
-        "-=0.16"
+        "-=0.76"
       )
       .to(
         [aBottom, nBottom],
@@ -266,7 +275,7 @@ const Hero = (props: Props) => {
           ease: "back.out(1.7)",
           stagger: 0.16,
         },
-        "-=0.16"
+        "-=0.56"
       )
       .to(
         [aTop, nTop],
@@ -276,7 +285,7 @@ const Hero = (props: Props) => {
           duration: 0.3, // Adjusted duration
           stagger: 0.16,
         },
-        "-=0.32"
+        "-=0.52"
       )
       .to(
         secondN,
@@ -300,20 +309,25 @@ const Hero = (props: Props) => {
 
       tl.to(gRef.current, {
         opacity: 1,
-        duration: 0.5,
+        duration: 0.3,
         ease: "power2.inOut"
-      })
+      }, "-=1.3")
       .to(gRef.current, {
         rotation: 20,
-        duration: 1.0,
-        repeat: 2,
-        yoyo: true,
+        duration: 0.4,
+        // repeat: 2,
+        // yoyo: true,
+        ease: "power1.inOut"
+      })
+      .to(gRef.current, {
+        rotation: -20,
+        duration: 0.4,
         ease: "power1.inOut"
       })
       .to(gRef.current, {
         rotation: 0,
-        duration: 0.5,
-        ease: "elastic.out(1, 0.3)"
+        duration: 0.3,
+        ease: "back.out(1.7)"
       });
 
     // Animation for 'i'

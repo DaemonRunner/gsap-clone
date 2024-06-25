@@ -1,127 +1,119 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
-
+import React from 'react';
 import { mori } from '@/fonts/font';
-
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 type Props = {
   sentence: string;
 };
 
+type AnimationType = 'default' | 'zoomOut' | 'letterByLetter';
+
 const HorizontalText = ({ sentence }: Props) => {
   const words = sentence.split(" ");
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    rootMargin: "0px 0px -50% 0px",
-  });
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
+  const getAnimationType = (index: number): AnimationType => {
+    if (index % 5 === 0) return 'zoomOut';
+    if (index % 7 === 0) return 'letterByLetter';
+    return 'default';
+  };
+
+  const wordVariants = {
+    default: {
+      hidden: { opacity: 0, y: 20 },
+      visible: { 
+        opacity: 1, 
+        y: 0,
+        transition: {
+          type: "spring",
+          damping: 12,
+          stiffness: 100,
+        },
+      },
+    },
+    zoomOut: {
+      hidden: { opacity: 0, scale: 1.5 },
+      visible: { 
+        opacity: 1, 
+        scale: 1,
+        transition: {
+          type: "spring",
+          damping: 12,
+          stiffness: 100,
+        },
+      },
+    },
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  const Word = ({ word, animationType, index }: { word: string; animationType: AnimationType; index: number }) => {
+    const [ref, inView] = useInView({
+      triggerOnce: true,
+      threshold: 0.7,
+    });
+
+    if (animationType === 'letterByLetter') {
+      return (
+        <span
+          ref={ref}
+          className={`inline-block text-[#fffce1] text-[5rem] font-extrabold ${mori.className}`}
+          style={{ letterSpacing: '0.3rem', fontWeight: '900' }}
+        >
+          {word.split('').map((letter, letterIndex) => (
+            <motion.span
+              key={letterIndex}
+              variants={letterVariants}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              custom={letterIndex}
+            >
+              {letter}
+            </motion.span>
+          ))}
+          &nbsp;
+        </span>
+      );
     }
-  }, [controls, inView]);
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.18, delayChildren: 0.04 * i },
-    }),
+    return (
+      <motion.span
+        ref={ref}
+        variants={wordVariants[animationType]}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        className={`inline-block text-[#fffce1] text-[5rem] font-extrabold ${mori.className}`}
+        style={{ letterSpacing: '0.3rem', fontWeight: '900' }}
+      >
+        {word}&nbsp;
+      </motion.span>
+    );
   };
-
-  const children = {
-    // visible: {
-    //   opacity: 1,
-    //   y: 0,
-    //   transition: {
-    //     type: "spring",
-    //     damping: 12,
-    //     stiffness: 100,
-    //   },
-    // },
-    visible: () => {
-        return {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                damping: 12,
-                stiffness: 100,
-            },
-        }
-    },
-    hidden: {
-      opacity: 0,
-      y: -20,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-
-  const SVGs = {
-    visible: () => {
-        return {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                damping: 12,
-                stiffness: 100,
-            },
-        }
-    },
-    hidden: {
-      opacity: 0,
-      y: -20,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  }
 
   return (
-    <motion.div
-    //   ref={ref}
-      style={{ overflow: 'hidden' }}
-    //   variants={container}
-    //   initial="hidden"
-    //   animate={controls}
-      className="w-[470%] mt-[15%] px-5"
-    >
-        <motion.div
-        ref={ref} variants={SVGs} whileInView="visible" viewport={{ once: true }}>
-        <Image  src="/horizontal-2.png" alt="err" width={700} height={700} className=" inline" />
-
-        </motion.div>
-      {words.map((word, index) => {
-        return (
-          <motion.span
-            ref={ref}
-            variants={children}
-            key={index}
-            initial="hidden"
-            // animate={controls}
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={index}
-            className={`inline-block text-[#fffce1] text-[5rem] font-extrabold ${mori.className}`}
-            style={{ letterSpacing: '0.3rem', fontWeight: '900' }}
-          >
-            {word}&nbsp;
-          </motion.span>
-        );
-      })}
-    </motion.div>
+    <div className="w-[470%] mt-[15%] px-5">
+      {words.map((word, index) => (
+        <Word 
+          key={index} 
+          word={word} 
+          animationType={getAnimationType(index)} 
+          index={index} 
+        />
+      ))}
+    </div>
   );
 };
 

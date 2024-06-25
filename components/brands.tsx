@@ -17,17 +17,25 @@ const Brands = (props: Props) => {
 
       if (firstImage && secondImage) {
         gsap.set(secondImage, { y: '100%' }); // Position second image outside the container at the bottom
-        const timeline = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+
+        const timeline = gsap.timeline({ repeat: -1 });
 
         timeline
-          .to(firstImage, { x: '140%', duration: 1, delay: 2, ease: "elastic.in(1, 0.3)" })
-          .to(secondImage, { y: '0%', duration: 1, delay: 2 }, '-=1')
-          .to(firstImage, { x: '0%', duration: 1, delay: 2, ease: "elastic.out(1, 0.3)" })
-          .to(secondImage, { y: '100%', duration: 1 }, '-=1')
-          .to(secondImage, { y: '0%', duration: 1, delay: 2 })
-          .to(firstImage, { x: '140%', duration: 1, ease: "elastic.in(1, 0.3)" }, '-=1')
-          .to(secondImage, { y: '100%', duration: 1, delay: 2 })
-          .to(firstImage, { x: '0%', duration: 1, ease: "elastic.out(1, 0.3)" }, '-=1');
+          // First image visible
+          .to(firstImage, { x: '0%', duration: 0 })
+          .to(secondImage, { y: '100%', duration: 0 })
+          .to({}, { duration: 2 }) // Pause for 2 seconds
+
+          // Transition to second image
+          .to(firstImage, { x: '140%', duration: 1, ease: "elastic.in(1, 0.3)" })
+          .to(secondImage, { y: '0%', duration: 1 }, '<') // Start at the same time as previous animation
+
+          // Second image visible
+          .to({}, { duration: 2 }) // Pause for 2 seconds
+
+          // Transition back to first image
+          .to(secondImage, { y: '100%', duration: 1 })
+          .to(firstImage, { x: '0%', duration: 1, ease: "elastic.out(1, 0.3)" }, '<'); // Start at the same time as previous animation
       }
     });
   }, []);
